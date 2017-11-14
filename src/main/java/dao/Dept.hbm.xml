@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 09-Nov-2017 08:46:17 by Hibernate Tools 5.2.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="dao.Dept" optimistic-lock="version" polymorphism="implicit" schema="CRUDAPP" select-before-update="false" table="DEPT">
+        <id name="deptno" type="byte">
+            <column name="DEPTNO" precision="2" scale="0"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="dname" optimistic-lock="true" type="string" unique="false">
+            <column length="14" name="DNAME"/>
+        </property>
+        <property generated="never" lazy="false" name="loc" optimistic-lock="true" type="string" unique="false">
+            <column length="13" name="LOC"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="emps" optimistic-lock="true" sort="unsorted" table="EMP">
+            <key on-delete="noaction">
+                <column name="DEPTNO" precision="2" scale="0"/>
+            </key>
+            <one-to-many class="dao.Emp" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

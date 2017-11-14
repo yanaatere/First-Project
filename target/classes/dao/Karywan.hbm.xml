@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 09-Nov-2017 08:46:17 by Hibernate Tools 5.2.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="dao.Karywan" optimistic-lock="version" polymorphism="implicit" schema="CRUDAPP" select-before-update="false" table="KARYWAN">
+        <id name="kode" type="string">
+            <column length="20" name="KODE"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="nama" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="NAMA" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 09-Nov-2017 08:46:17 by Hibernate Tools 5.2.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="dao.Emp" optimistic-lock="version" polymorphism="implicit" schema="CRUDAPP" select-before-update="false" table="EMP">
+        <id name="empno" type="short">
+            <column name="EMPNO" precision="4" scale="0"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="dao.Dept" embed-xml="true" fetch="select" insert="true" name="dept" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="DEPTNO" precision="2" scale="0"/>
+        </many-to-one>
+        <many-to-one class="dao.Emp" embed-xml="true" fetch="select" insert="true" name="emp" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="MGR" precision="4" scale="0"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="ename" optimistic-lock="true" type="string" unique="false">
+            <column length="10" name="ENAME"/>
+        </property>
+        <property generated="never" lazy="false" name="job" optimistic-lock="true" type="string" unique="false">
+            <column length="9" name="JOB"/>
+        </property>
+        <property generated="never" lazy="false" name="hiredate" optimistic-lock="true" type="date" unique="false">
+            <column length="7" name="HIREDATE"/>
+        </property>
+        <property generated="never" lazy="false" name="sal" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="SAL" precision="7"/>
+        </property>
+        <property generated="never" lazy="false" name="comm" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="COMM" precision="7"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="emps" optimistic-lock="true" sort="unsorted" table="EMP">
+            <key on-delete="noaction">
+                <column name="MGR" precision="4" scale="0"/>
+            </key>
+            <one-to-many class="dao.Emp" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>
